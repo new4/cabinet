@@ -1,0 +1,83 @@
+.slide.fp-slide.fp-table {
+  font-size: 30px;
+
+  position: relative;
+
+  display: none;
+
+  transition: 0.6s ease-in-out left;
+
+  color: #FFFFFF;
+}
+
+/* 三种状态 active, next, prev */
+.slide.fp-slide.fp-table.active,
+.slide.fp-slide.fp-table.next,
+.slide.fp-slide.fp-table.prev {
+  display: table;
+}
+
+.slide.fp-slide.fp-table.active {
+  left: 0;
+}
+
+.slide.fp-slide.fp-table.next,
+.slide.fp-slide.fp-table.prev {
+  position: absolute;
+  top: 0;
+
+  width: 100%;
+}
+
+.slide.fp-slide.fp-table.next {
+  left: 100%;
+}
+
+.slide.fp-slide.fp-table.prev {
+  left: -100%;
+}
+
+/* 两个方向 left, right */
+.slide.fp-slide.fp-table.next.left,
+.slide.fp-slide.fp-table.prev.right {
+  left: 0;
+}
+
+.slide.fp-slide.fp-table.active.left {
+  left: -100%;
+}
+
+.slide.fp-slide.fp-table.active.right {
+  left: 100%;
+}
+
+@media all and (transform-3d), (-webkit-transform-3d) {
+  .slide.fp-slide.fp-table {
+    transition: transform 0.6s ease-in-out;
+
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
+
+  .slide.fp-slide.fp-table.next,
+  .slide.fp-slide.fp-table.active.right {
+    left: 0;
+
+    transform: translate3d(100%, 0, 0);
+  }
+
+  .slide.fp-slide.fp-table.prev,
+  .slide.fp-slide.fp-table.active.left {
+    left: 0;
+
+    transform: translate3d(-100%, 0, 0);
+  }
+
+  .slide.fp-slide.fp-table.next.left,
+  .slide.fp-slide.fp-table.prev.right,
+  .slide.fp-slide.fp-table.active {
+    left: 0;
+
+    transform: translate3d(0, 0, 0);
+  }
+}
